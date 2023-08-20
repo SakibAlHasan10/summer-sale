@@ -16,7 +16,8 @@ function productCurd(card) {
     const countTitleInContainer = productTitleInContainer.childElementCount;
     // created element for cards title
     const p = document.createElement('p');
-    p.innerHTML = ` ${countTitleInContainer + 1}.  ${productTitle} `;
+    p.innerHTML = `${countTitleInContainer + 1}.  ${productTitle} `;
+    p.classList.add('font-semibold');
     // appendChild of cards title
     productTitleInContainer.appendChild(p)
     // product price
