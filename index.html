@@ -223,8 +223,8 @@
                         <div class="pb-5 flex justify-between w-full">
                             <input type="text" id="coupon" placeholder="Coupon code "
                                 class="w-full block  rounded-md border  border-solid pb-3 border-slate-400 pl-4 pt-2">
-                            <button id="apply-button"
-                                class="hidden   -ml-32 px-6 pb-3 pt-2   rounded-e-md bg-[#E527B2] text-white text-xl hover:bg-red-400">Apply</button>
+                            <button id="apply-button" disabled="disabled"
+                                class="  btn -ml-32 px-6 pb-3 pt-2   rounded-e-md bg-[#E527B2] text-white text-xl hover:bg-red-400">Apply</button>
                         </div>
                     </div>
                     <div class="bg-white px-5 pt-3 rounded-lg mt-5">
@@ -232,15 +232,16 @@
                         </div>
                         <hr class="text-slate-500 my-5">
                         <h3 class="text-6 font-semibold">Total price: <span
-                                class="font-normal"><span>0.00</span>TK</span></h3>
-                        <h3 class="mt-2 text-6 font-semibold">Discount : <span class="font-normal"><span
-                                    id="discount">0.00</span>TK</span></h3>
-                        <h3 class="mt-2 text-6 font-semibold mb-3" id="total-price">Total: <span
-                                class="font-normal">0.00</span> <span class="font-normal">TK</span></h3>
+                                class="font-normal" id="all-total-price">0.00</span><span class="font-normal">TK</span></h3>
+                        <h3 class="mt-2 text-6 font-semibold">Discount : 
+                            <span class="font-normal" id="discount">0.00</span><span>TK </span></h3>
+                        <h3 class="mt-2 text-6 font-semibold mb-3">Total: <span
+                                class="font-normal" id="total-price">0.00</span> <span class="font-normal">TK</span></h3>
                         <hr class="text-slate-500 pb-12">
                         <div class="relative -mt-7">
-                            <button onclick="my_modal_5.showModal()"
-                                class=" hidden btn absolute w-full text-xl md:text-lg xl:text-xl font-semibold bg-[#E527B2] text-white hover:bg-red-400">Make
+                            <button id="purchase" disabled="disabled" onclick="my_modal_5.showModal()"
+                            
+                                class="   btn absolute w-full text-xl md:text-lg xl:text-xl font-semibold bg-[#E527B2] text-white hover:bg-red-400">Make
                                 Purchase</button>
                         </div>
                         <!-- Open the modal using ID.showModal() method -->
