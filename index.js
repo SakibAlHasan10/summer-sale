@@ -33,13 +33,7 @@ function productCurd(card) {
     buttonVisible(allTotalPrice, apply, payableTotalAmount);
 }
 
-
-
-// const apply = document.getElementById('apply-button');
-// const productPrice = document.getElementById('total-price').childNodes[0].innerText;
-// const priceNumber = parseFloat(productPrice);
-
-    // disable apply button block
+    // apply button block
 function buttonVisible(price, button, add) {
     if (price >= 200) {
         button.style.display = "block";
@@ -50,13 +44,18 @@ function buttonVisible(price, button, add) {
 };
 
 document.getElementById('apply-button').addEventListener('click', function(){
-    const coupon = document.getElementById('coupon').value;
+    const coupon = document.getElementById('coupon');
+    const couponText = coupon.value;
     const totalPrice = document.getElementById('total-price').childNodes[1];
     const discount = document.getElementById('discount');
-    if(coupon === 'SELL200'){
+    if(couponText === 'SELL200'){
         discount.innerText= (allTotalPrice*0.2).toFixed(2) ;
-        // let cost  
         totalPrice.innerText = (allTotalPrice- (allTotalPrice*0.2)).toFixed(2) ;
-        //  = cost;
-    };
+        console.log('hello')
+    }
+    coupon.value = '';
 });
+
+document.getElementById('go-home').addEventListener('click', function(){
+    window.location.href= "http://127.0.0.1:5500/index.html";
+})
