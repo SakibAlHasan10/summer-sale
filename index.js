@@ -2,25 +2,35 @@
 let allTotalPrice = 0;
 
 function productCurd(card) {
+    // card title
     const productTitle = card.childNodes[3].childNodes[3].innerText;
+    // cards title
     const addProductTitle = card.parentNode.parentNode.parentNode.childNodes[5].childNodes[3].childNodes[1];
+    // cards title count
     const count = addProductTitle.childElementCount;
+    // created element for cards title
     const p = document.createElement('p');
     p.innerHTML = ` ${count + 1}.  ${productTitle} `;
+    // appendChild of cards title
     addProductTitle.appendChild(p)
+    // product price
     const productPrice = card.childNodes[3].childNodes[5].childNodes[0].innerText;
     const productPriceNumber = parseFloat(productPrice)
+    // cards total price
     const totalPrice = card.parentNode.parentNode.parentNode.childNodes[5].childNodes[3].childNodes[5].childNodes[1].childNodes[0];
     allTotalPrice = allTotalPrice + productPriceNumber;
     totalPrice.innerText = allTotalPrice.toFixed(2);
-    const totalDiscount = card.parentNode.parentNode.parentNode.childNodes[5].childNodes[3].childNodes[7].childNodes[1].childNodes[0];
-    const payableTotalAmount = card.parentNode.parentNode.parentNode.childNodes[5].childNodes[3].childNodes[9].childNodes[1].childNodes[0];
+    // total price after discount
+    const payableTotalAmount = card.parentNode.parentNode.parentNode.childNodes[5].childNodes[3].childNodes[9].childNodes[1];
+    // make purchase button
     const makePurchase = card.parentNode.parentNode.parentNode.childNodes[5].childNodes[3].childNodes[13].childNodes[1];
     if (productPriceNumber > 0) {
         makePurchase.style.display = "block";
     };
+    // coupon apply button
     const apply = card.parentNode.parentNode.parentNode.childNodes[5].childNodes[1].childNodes[3].childNodes[3];
-    buttonVisible(allTotalPrice, apply, payableTotalAmount, totalDiscount );
+    // disable apply button block
+    buttonVisible(allTotalPrice, apply, payableTotalAmount);
 }
 
 
@@ -28,14 +38,25 @@ function productCurd(card) {
 // const apply = document.getElementById('apply-button');
 // const productPrice = document.getElementById('total-price').childNodes[0].innerText;
 // const priceNumber = parseFloat(productPrice);
-function buttonVisible(price, button, add, discount) {
+
+    // disable apply button block
+function buttonVisible(price, button, add) {
     if (price >= 200) {
         button.style.display = "block";
-        discount.innerText= (allTotalPrice*0.2).toFixed(2) ;
-        add.innerText= (allTotalPrice- (allTotalPrice*0.2)).toFixed(2) ;
+        add.innerText= allTotalPrice.toFixed(2);
     }else{
         add.innerText= allTotalPrice.toFixed(2);
-    }
-}
+    };
+};
 
-function discount()
+document.getElementById('apply-button').addEventListener('click', function(){
+    const coupon = document.getElementById('coupon').value;
+    const totalPrice = document.getElementById('total-price').childNodes[1];
+    const discount = document.getElementById('discount');
+    if(coupon === 'SELL200'){
+        discount.innerText= (allTotalPrice*0.2).toFixed(2) ;
+        // let cost  
+        totalPrice.innerText = (allTotalPrice- (allTotalPrice*0.2)).toFixed(2) ;
+        //  = cost;
+    };
+});
